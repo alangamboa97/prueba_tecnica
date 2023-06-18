@@ -1,7 +1,12 @@
 # Prueba_tecnica
 Prueba Técnica
 
+## Directorio:
 
+- main.py : Archivo dónde se incializa la API
+- falante.py : Archivo dónde se crea la clase Conjunto
+- test_faltante.py : Pruebas unitarias
+- data.py : depuración y carga de información 
 
 ## Sección 1: Procesamiento y transferencia de datos
 
@@ -23,7 +28,7 @@ Para cargar incial la información sin depurar utilice MongoDB debido a su felix
 
 ### 1.2 Extracción
 
-Extraí la información en formato csv debido a que es uno de los formatos más fáciles de trabajar si se utiliza la librería de pandas
+Extraje la información en formato csv debido a que es uno de los formatos más fáciles de trabajar si se utiliza la librería de pandas
 
 ### 1.3 Transformación
 
