@@ -63,3 +63,12 @@ Especificaciones:
 - La clase implementada debe de poder calcular que numero se extrajo y presentarlo
 - Debe de incluir validación del input de datos (numero, número menor de 100)
 - La aplicación debe de poder ejecutarse con un argumento introducido por el usuario que haga uso de nuestra clase y muestre que pudo calcular que se extrajo ese número
+## Implementación
+
+### 1.- Creación de la Clase Conjunto
+
+![image](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/7ae5e93c-83b1-4308-8770-f004437b25c6)
+
+
+Para la implementación de esta sección, utilicé FastAPI para crear una API sencilla que permita la interacción mediante peticiones GET y DELETE.
+
