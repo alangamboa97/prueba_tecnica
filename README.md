@@ -3,6 +3,8 @@ Prueba Técnica
 
 ## Directorio:
 
+- data_prueba_tecnica_mongo.csv : archivo generado de la información extraída de mongo
+- data_prueba_tecnica_mongo_modificado.csv : archivo csv depurado
 - main.py : Archivo dónde se incializa la API
 - falante.py : Archivo dónde se crea la clase Conjunto
 - test_faltante.py : Pruebas unitarias
@@ -36,7 +38,7 @@ Realicé las siguientes transformaciones para cumplir con el esquema propuesto:
 - Cambié la columna paid_at en el archivo csv por updated_at utilizando pandas
 - De acuerdo al esquema propuesto, las únicas columnas que podrían encontrarse vacías son company_name, y updated_at, por lo tanto procedí a verificar que no se encontraran celdas vacías o con valores de nan de las columnas restantes. Encontrando 3 registros en id que estaban vacíos. Por lo tanto, procedí a utilizar la librería uuid para generar un id al azar a dichos registros. También encontré 4 registros vacíos en la columna de company_name, Todas ellas pertecientes a MiPasajefy, por lo que procedí a asignar el company_id de dicha compañía a dichos regitros.
 - De acuerdo a la información del archivo csv, sólo hay dos compañias MiPasajefy y Muebles Chidos, sin embargo encontré registros con valores númericos, por lo cual procedí a cambiar dichos registros por MiPasajefy
--
+- Generé un nuevo archivo data_prueba_tecnica_mongo_modificado.csv con las transformaciones anteriormente mencionadas
 ### 1.4 Dispersión de la información
 La dispersión tablas se generaron en base al siguiente diagrama:
 
