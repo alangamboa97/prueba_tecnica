@@ -72,7 +72,7 @@ Especificaciones:
 
 Para instalar FastAPI ejecuta el siguiente comando:
 
-pip install "fastapi[all]"
+> pip install "fastapi[all]"
 
 Para la implementación de esta sección, utilicé FastAPI para crear una API sencilla que permita la interacción mediante peticiones GET y DELETE.
 
