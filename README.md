@@ -67,6 +67,7 @@ Especificaciones:
 
 ### 1.- Creación de la Clase Conjunto
 
+![conjunto](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/1430c32f-6946-4320-9a7f-0f0cd7a7da51)
 
 
 Para la implementación de esta sección, utilicé FastAPI para crear una API sencilla que permita la interacción mediante peticiones GET y DELETE.
