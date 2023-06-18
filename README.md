@@ -41,9 +41,7 @@ La dispersión tablas se generaron en base al siguiente diagrama:
 
 ### 1.5 SQL
 
-Las tablas se generaron en base al siguiente diagrama:
 
-![image](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/5cd07233-ce5c-4ae4-aeea-06198df16e3a)
 
 
 
