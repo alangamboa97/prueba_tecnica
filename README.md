@@ -1,71 +1,72 @@
 # Prueba_tecnica
 Prueba Técnica
 
+## Directorio:
 
+- data_prueba_tecnica_mongo.csv : archivo generado de la información extraída de mongo
+- data_prueba_tecnica_mongo_modificado.csv : archivo csv depurado
+- main.py : Archivo dónde se incializa la API
+- falante.py : Archivo dónde se crea la clase Conjunto
+- test_faltante.py : Pruebas unitarias
+- data.py : depuración y carga de información 
 
 ## Sección 1: Procesamiento y transferencia de datos
 
 ### Objetivo: Crear un proceso con las herramientas disponibles por el usuario
 
 Los ejercicios de programación tienen que incluir los procedimientos de instalación y ejecución de las herramientas a utilizar y los scripts que realizaran los procedimientos. Se puede realizar a través de Dockers. Pueden incluir pruebas unitarias o de integración. Se puede compartir por Github o cualquier repositorio o en un zip.
+### Implementación
 
-Nota: Junto con esta guía te compartimos 1 data set con la información sobre las compras de dos compañías ficticias que procesan con nosotros.
+Primero instale las dependencias necesarias utilizando el siguiente comando
+> pip install pandas pymongo mysql-connection-python numpy
 
-#### 1.1 Carga de información
+Utilizando un entorno virtual generé un archivo requirements.txt con el siguiente comando
 
-La información proporcionada se debe de cargar en alguna base de datos. Puede ser estructurada o no estructurada. Ejemplo: MySQL, Postgres, MongoDB, etc.
+> pip freeze > requirements.txt
 
-Incluye comentarios del por qué elegiste ese tipo de base de datos.
+### 1.1 Carga de la Información
 
-#### 1.2 Extracción
+Para cargar incial la información sin depurar utilice MongoDB debido a su felixibilidad con la información corrupta o faltante
 
-Se debe de realizar un procedimiento de extracción de la información anterior por medio de algún lenguaje de programación que permita procesarlo. El formato final de la información extraída puede ser CSV, Avro, parquet o el que se considere más adecuado.
+### 1.2 Extracción
 
-Agrega comentarios acerca del por qué tuviste que utilizar el lenguaje y el formato que elegiste. También platicamos si te encontraste con algún reto a la hora de extraer la información.
+Extraje la información en formato csv debido a que es uno de los formatos más fáciles de trabajar si se utiliza la librería de pandas
 
-#### 1.3 Transformación
+### 1.3 Transformación
 
-Se propone el siguiente esquema para la información
+Realicé las siguientes transformaciones para cumplir con el esquema propuesto:
+- Cambié la columna paid_at en el archivo csv por updated_at utilizando pandas
+- De acuerdo al esquema propuesto, las únicas columnas que podrían encontrarse vacías son company_name, y updated_at, por lo tanto procedí a verificar que no se encontraran celdas vacías o con valores de nan de las columnas restantes. Encontrando 3 registros en id que estaban vacíos. Por lo tanto, procedí a utilizar la librería uuid para generar un id al azar a dichos registros. También encontré 4 registros vacíos en la columna de company_name, Todas ellas pertecientes a MiPasajefy, por lo que procedí a asignar el company_id de dicha compañía a dichos regitros.
+- De acuerdo a la información del archivo csv, sólo hay dos compañias MiPasajefy y Muebles Chidos, sin embargo encontré registros con valores númericos, por lo cual procedí a cambiar dichos registros por MiPasajefy
+- Generé un nuevo archivo data_prueba_tecnica_mongo_modificado.csv con las transformaciones anteriormente mencionadas
+### 1.4 Dispersión de la información
+La dispersión de las tablas se generaron en base al siguiente diagrama:
 
-Cargo
-id varchar(24) NOT NULL
-company_name varchar(130) NULL
-company_id varchar(24) NOT NULL
-amount decimal(16,2) NOT NULL
-status marchar(30) NOT NULL
-created_at timestamp NOT NULL
-updated_at timestamp NULL
+![image](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/5cd07233-ce5c-4ae4-aeea-06198df16e3a)
 
-Realiza las transformaciones necesarias para que la información extraída cumpla con el esquema. Puedes realizarlas con el lenguaje de programación de tu preferencia.
+Y se almacenaron en mydatabase2 de Mongodb como colecciones
 
-Incluye comentarios acerca de que transformaciones tuviste que realizar y que retos te encontraste en la implementación de estos mecanismos de transformación.
+![image](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/2ed8e875-9079-4dce-b8ed-bc4ca44854e3)
 
-#### 1.4 Dispersión de la información
 
-Se debe de utilizar una base de datos MySQL, Postgres, MongoDB, etc. En esta base se va a crear un esquema estructurado basado en el ejercicio anterior, pero debemos de crear una tabla llamada charges donde tendremos la información de las transacciones y otra llamada companies donde incluiremos la información de las compañias. Estas tablas deberán de estar relacionadas. Cargaremos la información del dataset en estas dos tablas.
+### 1.5 SQL
 
-Incluye el diagrama de base de datos resultado de este ejercicio.
 
-#### 1.5 SQL
 
-Diseña una vista en la base de datos MySQL, Postgres, MongoDB, etc., de las tablas donde cargamos la información transformada para que podamos ver el monto total transaccionado por día para las diferentes compañías.
 
-## Sección 2: Creación de una API
 
-### Objetivo: Creación e implementación de una aplicación
 
-Problema: Calcular el numero faltante de un conjunto de los primeros 100 números naturales del cual se extrajo uno.
 
-Especificaciones:
-- La aplicación debe de implementarse en el lenguaje de acuerdo con el perfil
-- Se debe de implementar una clase que represente al conjunto de los primero 100 números
-- La clase implementada debe de tener el método Extract para extraer un cierto número deseado
-- La clase implementada debe de poder calcular que numero se extrajo y presentarlo
-- Debe de incluir validación del input de datos (numero, número menor de 100)
-- La aplicación debe de poder ejecutarse con un argumento introducido por el usuario que haga uso de nuestra clase y muestre que pudo calcular que se extrajo ese número
-## Implementación
+
+
+## Seccción 2: Creación de un API
+
+### Implementación
 
 ### 1.- Creación de la Clase Conjunto
+
+
+
 
 ![conjunto](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/1430c32f-6946-4320-9a7f-0f0cd7a7da51)
 ### 2.- Instalación de FastAPI
@@ -74,5 +75,16 @@ Para instalar FastAPI ejecuta el siguiente comando:
 
 > pip install "fastapi[all]"
 
-Para la implementación de esta sección, utilicé FastAPI para crear una API sencilla que permita la interacción mediante peticiones GET y DELETE.
+Posteriormente se crea una API como se muestra a continuación:
+![api](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/b7b7a4e1-b594-4d2f-9b15-597a68f33953)
+
+Para inciar el servidor se ejecuta el siguiente comando:
+> uvicorn main:app --reload
+
+La API previamente creada acepta dos direcciones
+
+- DELETE: http://127.0.0.1:8000/extraer/{} dónde dentro de {} se indica el número a extraer del conjunto original
+- GET: http://127.0.0.1:8000/calcular, dónde devuelve el conjunto original sin los numeros extraidos
+
+
 
