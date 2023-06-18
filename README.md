@@ -15,7 +15,7 @@ Prueba Técnica
 ### Objetivo: Crear un proceso con las herramientas disponibles por el usuario
 
 Los ejercicios de programación tienen que incluir los procedimientos de instalación y ejecución de las herramientas a utilizar y los scripts que realizaran los procedimientos. Se puede realizar a través de Dockers. Pueden incluir pruebas unitarias o de integración. Se puede compartir por Github o cualquier repositorio o en un zip.
-### Implementación
+### Implementación 
 
 Primero instale las dependencias necesarias utilizando el siguiente comando
 > pip install pandas pymongo mysql-connection-python numpy
@@ -26,7 +26,7 @@ Utilizando un entorno virtual generé un archivo requirements.txt con el siguien
 
 ### 1.1 Carga de la Información
 
-Para cargar incial la información sin depurar utilice MongoDB debido a su felixibilidad con la información corrupta o faltante
+Para cargar incial la información sin depurar utilice MongoDB de manera local debido a su felixibilidad con la información corrupta o faltante
 
 ### 1.2 Extracción
 
@@ -52,7 +52,7 @@ Y se almacenaron en mydatabase2 de Mongodb como colecciones
 ### 1.5 SQL
 
 
-
+Inicialmente tenía pensado vaciar la información depurada a una base de datos en MySQL para garantizar la integridad de la información pero había registros incompletos aún en el archivo por lo cual procedí a seguir depurandolo.
 
 
 
