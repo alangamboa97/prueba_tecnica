@@ -87,4 +87,11 @@ La API previamente creada acepta dos direcciones
 - GET: http://127.0.0.1:8000/calcular, dónde devuelve el conjunto original sin los numeros extraidos
 
 
+### Pruebas
 
+Las pruebas unitarias se encuentran en el archivo test_faltante.py 
+Se proponen 4 casos:
+- Se extrae un numero que esté dentro del conjunto
+- Se genera una excepción si el número es mayor a 100
+- Se genera si el conjunto está completo y no se ha extraido ningún numero
+- Se extrae el numero 10 y se comprueba que no se encuentre en el conjunto
