@@ -89,8 +89,7 @@ La API previamente creada acepta dos direcciones
 
 ### Pruebas
 
-Las pruebas unitarias se encuentran en el archivo
-- test_faltante.py 
+Las pruebas unitarias se encuentran en el archivo test_faltante.py 
 Se proponen 4 casos:
 - Se extrae un numero que esté dentro del conjunto
 - Se genera una excepción si el número es mayor a 100
