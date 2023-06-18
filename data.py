@@ -67,12 +67,7 @@ def modificacion():
 
 # Verificar si hay valores nulos en las columnas 'id', 'company_id', 'amount', 'status' y 'created_at'
     null_columns= df[['id','company_name','company_id', 'amount', 'status', 'created_at']].columns[df[['id', 'company_name' ,'company_id', 'amount', 'status', 'created_at']].isnull().any()]
-    is_empty = df['amount'].isna().any()
-
-    if is_empty:
-        print("La columna 'amount' contiene valores vacíos.")
-    else:
-        print("La columna 'amount' no contiene valores vacíos.")
+    print(null_columns)
 # Si hay valores nulos, imprimir un mensaje de error
     if len(null_columns) > 0:
         for column in null_columns:
@@ -210,11 +205,15 @@ def subir_datos_mongo():
 from pymongo import MongoClient
 
 
+from pymongo import MongoClient
+
 def crear_vista():
     client = MongoClient("mongodb://localhost:27017/")
-    db = client["mydatabase2"]
+    db = client["mydatabase2"].get_collection("charges")
+    companies_col = db["companies"]
+    charges_col = db["charges"]
     
-    pipeline = [
+    charges_col.createView("vistaTransaccionesPorDia", "charges", [
         {
             "$lookup": {
                 "from": "companies",
@@ -227,28 +226,32 @@ def crear_vista():
             "$unwind": "$company"
         },
         {
-            "$group": {
-                "_id": {
-                    "company_id": "$company_id",
-                    "company_name": "$company.name",
-                    "date": "$date"
+            "$project": {
+                "_id": 0,
+                "company_id": 1,
+                "date": {
+                    "$dateToString": {
+                        "format": "%Y-%m-%d",
+                        "date": "$created_at"
+                    }
                 },
-                "total_amount": { "$sum": "$amount" }
+                "total": "$amount",
+                "company_name": "$company.company_name"
+            }
+          
+        },
+        {
+            "$group": {
+                "_id": "$date",
+                "total": {"$sum": "$total"},
             }
         },
         {
-            "$project": {
-                "_id": 0,
-                "company_id": "$_id.company_id",
-                "company_name": "$_id.company_name",
-                "date": "$_id.date",
-                "total_amount": 1
-            }
+            "$sort": {"_id": 1}
         }
-    ]
-    
-    db.create_view("transactions_by_company_and_date", "charges", pipeline)
+    ])
+       
 
 crear_vista()
 
-crear_vista()
+
