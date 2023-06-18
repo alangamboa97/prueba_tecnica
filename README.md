@@ -46,6 +46,9 @@ La dispersión de las tablas se generaron en base al siguiente diagrama:
 
 Y se almacenaron en mydatabase2 de Mongodb como colecciones
 
+![image](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/2ed8e875-9079-4dce-b8ed-bc4ca44854e3)
+
+
 ### 1.5 SQL
 
 
