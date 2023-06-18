@@ -40,11 +40,11 @@ Realicé las siguientes transformaciones para cumplir con el esquema propuesto:
 - De acuerdo a la información del archivo csv, sólo hay dos compañias MiPasajefy y Muebles Chidos, sin embargo encontré registros con valores númericos, por lo cual procedí a cambiar dichos registros por MiPasajefy
 - Generé un nuevo archivo data_prueba_tecnica_mongo_modificado.csv con las transformaciones anteriormente mencionadas
 ### 1.4 Dispersión de la información
-La dispersión tablas se generaron en base al siguiente diagrama:
+La dispersión de las tablas se generaron en base al siguiente diagrama:
 
 ![image](https://github.com/alangamboa97/prueba_tecnica/assets/23564068/5cd07233-ce5c-4ae4-aeea-06198df16e3a)
 
-
+Y se almacenaron en mydatabase2 de Mongodb como colecciones
 
 ### 1.5 SQL
 
